@@ -96,3 +96,226 @@ Nest is an MIT-licensed open source project. It can grow thanks to the sponsors 
 ## License
 
 Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+
+# Dealo Backend API
+
+**Africa's trusted social economy for learning and earning**
+
+Dealo connects personalized AI learning and instructor-led courses with a job marketplace, social profiles, and financial tools. Starting with free YouTube + AI-powered LMS, users gain skills, earn certifications, and access gigs.
+
+## 🚀 Features
+
+### Core Functionality
+
+- **AI-Powered Learning**: Generate courses from YouTube videos using Gemini AI
+- **Social Profiles**: Build reputation with endorsements and achievements
+- **Freelance Marketplace**: Post and bid on jobs with smart matching
+- **Certification System**: Earn verifiable certificates for completed courses
+- **Payment Processing**: Integrated payment solutions for Africa
+
+### Technical Features
+
+- **RESTful API**: Comprehensive API with Swagger documentation
+- **JWT Authentication**: Secure user authentication and authorization
+- **Database**: MySQL with TypeORM for data persistence
+- **AI Integration**: Google Gemini and OpenAI for intelligent features
+- **Rate Limiting**: Built-in protection against abuse
+- **Queue Management**: Redis-based job processing
+- **Validation**: Comprehensive input validation and sanitization
+
+## 🏗️ Architecture
+
+```
+src/
+├── auth/           # Authentication & Authorization
+├── users/          # User management & profiles
+├── courses/        # Course management & learning
+├── jobs/           # Freelance marketplace
+├── payments/       # Payment processing
+├── ai/             # AI-powered services
+├── config/         # Configuration files
+└── common/         # Shared utilities
+```
+
+## 🛠️ Tech Stack
+
+- **Framework**: NestJS (Node.js)
+- **Database**: MySQL with TypeORM
+- **Authentication**: JWT with Passport
+- **AI Services**: Google Gemini, OpenAI
+- **Queue**: Redis with Bull
+- **Documentation**: Swagger/OpenAPI
+- **Validation**: class-validator
+- **Security**: Helmet, CORS, Rate Limiting
+
+## 📋 Prerequisites
+
+- Node.js (v18 or higher)
+- MySQL (v8.0 or higher)
+- Redis (v6.0 or higher)
+- npm or yarn
+
+## 🚀 Quick Start
+
+### 1. Clone the repository
+
+```bash
+git clone <repository-url>
+cd dealo-backend
+```
+
+### 2. Install dependencies
+
+```bash
+npm install
+```
+
+### 3. Set up environment variables
+
+```bash
+cp env.example .env
+# Edit .env with your configuration
+```
+
+### 4. Set up the database
+
+```bash
+# Create MySQL database
+mysql -u root -p
+CREATE DATABASE dealo;
+```
+
+### 5. Run migrations (if using migrations)
+
+```bash
+npm run db:migrate
+```
+
+### 6. Start the development server
+
+```bash
+npm run start:dev
+```
+
+The API will be available at `http://localhost:3000`
+API Documentation: `http://localhost:3000/api/docs`
+
+## 📚 API Documentation
+
+### Authentication Endpoints
+
+- `POST /api/v1/auth/register` - Register a new user
+- `POST /api/v1/auth/login` - Login user
+- `GET /api/v1/auth/profile` - Get current user profile
+- `POST /api/v1/auth/refresh` - Refresh access token
+
+### User Management
+
+- `GET /api/v1/users` - Get all users
+- `GET /api/v1/users/profile` - Get current user profile
+- `PUT /api/v1/users/profile` - Update user profile
+- `GET /api/v1/users/search` - Search users
+- `GET /api/v1/users/top-freelancers` - Get top freelancers
+- `GET /api/v1/users/top-instructors` - Get top instructors
+
+### Course Management
+
+- `GET /api/v1/courses` - Get all courses
+- `POST /api/v1/courses` - Create a new course
+- `GET /api/v1/courses/:id` - Get course by ID
+- `PUT /api/v1/courses/:id` - Update course
+- `POST /api/v1/courses/:id/publish` - Publish course
+- `POST /api/v1/courses/generate-from-youtube` - Generate course from YouTube
+
+### Job Marketplace
+
+- `GET /api/v1/jobs` - Get all jobs
+- `POST /api/v1/jobs` - Create a new job
+- `GET /api/v1/jobs/:id` - Get job by ID
+- `PUT /api/v1/jobs/:id` - Update job
+- `POST /api/v1/jobs/:id/assign/:freelancerId` - Assign freelancer
+- `POST /api/v1/jobs/:id/complete` - Complete job
+
+### AI Services
+
+- `POST /api/v1/ai/generate-course` - Generate course from YouTube
+- `POST /api/v1/ai/generate-quiz` - Generate quiz from content
+- `POST /api/v1/ai/learning-path` - Generate personalized learning path
+- `POST /api/v1/ai/job-match` - Analyze job match
+- `GET /api/v1/ai/recommendations` - Get personalized recommendations
+
+## 🔧 Configuration
+
+### Environment Variables
+
+| Variable         | Description             | Default       |
+| ---------------- | ----------------------- | ------------- |
+| `NODE_ENV`       | Application environment | `development` |
+| `PORT`           | Server port             | `3000`        |
+| `DB_HOST`        | Database host           | `localhost`   |
+| `DB_PORT`        | Database port           | `3306`        |
+| `DB_USERNAME`    | Database username       | `root`        |
+| `DB_PASSWORD`    | Database password       | -             |
+| `DB_NAME`        | Database name           | `dealo`       |
+| `JWT_SECRET`     | JWT secret key          | -             |
+| `JWT_EXPIRES_IN` | JWT expiration time     | `7d`          |
+| `REDIS_HOST`     | Redis host              | `localhost`   |
+| `REDIS_PORT`     | Redis port              | `6379`        |
+| `GEMINI_API_KEY` | Google Gemini API key   | -             |
+| `OPENAI_API_KEY` | OpenAI API key          | -             |
+
+## 🧪 Testing
+
+```bash
+# Unit tests
+npm run test
+
+# e2e tests
+npm run test:e2e
+
+# Test coverage
+npm run test:cov
+```
+
+## 📦 Deployment
+
+### Production Build
+
+```bash
+npm run build
+npm run start:prod
+```
+
+### Docker (coming soon)
+
+```bash
+docker build -t dealo-backend .
+docker run -p 3000:3000 dealo-backend
+```
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🆘 Support
+
+For support, email support@dealonetwork.com or join our Slack channel.
+
+## 🏆 Team
+
+- **Ibrahim Openiyi** - CEO & Lead Developer
+- **Pius Lucky** - CTO
+- **Mogbojuri Oluwasegun** - CPO
+- **Michael Adeniyi** - QA Engineer & CMO
+
+---
+
+**Dealo** - Empowering Africa's digital workforce through AI-powered learning and earning opportunities.
